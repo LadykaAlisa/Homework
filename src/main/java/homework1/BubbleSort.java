@@ -1,4 +1,8 @@
+package homework1;
+
 import java.util.Random;
+
+//TODO: Write bubble sort
 
 public class BubbleSort {
 
