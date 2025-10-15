@@ -1,21 +1,40 @@
 package homework2;
 
-import homework2.IPhone;
+public class IOS implements Phone {
 
-public class IOS implements IPhone{
+    public String modelName;
+    public String color;
+
+    public IOS (String modelName, String color) {
+        this.modelName = modelName;
+        this.color = color;
+    }
     @Override
     public void call() {
-        System.out.println("Рінг - рінг");
+        System.out.println(color + " " + modelName + " " + "Рінг - рінг");
     }
 
     @Override
     public void unlockScreen() {
-        System.out.println("Розблоковано");
+        System.out.println(color + " " + modelName + " " + "Розблоковано");
     }
 
     @Override
     public void blockScreen() {
-        System.out.println("Заблоковано");
+        System.out.println(color + " " + modelName + " " + "Заблоковано");
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof IOS) {
+            IOS c = (IOS) o;
+            return this.color.equals(c.color) && this.modelName.equals(c.modelName);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return (modelName + color).hashCode();
     }
 }

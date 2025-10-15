@@ -4,7 +4,7 @@ package homework2;
 //TODO: create classes IOS and Android which implement IPhone
 //TODO: unlock, make call, lock screen for both phones
 
-public interface IPhone {
+public interface Phone {
     void call();
     void unlockScreen();
     void blockScreen();
