@@ -26,6 +26,11 @@ public class ProMax {
         newPhone1.blockScreen();
 
         System.out.println();
+        newPhone1_2.call();
+        newPhone1_2.unlockScreen();
+        newPhone1_2.blockScreen();
+
+        System.out.println();
         newPhone2.call();
         newPhone2.unlockScreen();
         newPhone2.blockScreen();
