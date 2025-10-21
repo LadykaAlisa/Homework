@@ -35,16 +35,20 @@ public class ProMax {
         newPhone2.unlockScreen();
         newPhone2.blockScreen();
 
+        System.out.println();
         System.out.println("newPhone1.equals(newPhone1_1): " + newPhone1.equals(newPhone1_1));
         System.out.println("newPhone1.equals(newPhone1_2): " + newPhone1.equals(newPhone1_2));
 
+        System.out.println();
         System.out.println("newPhone2.equals(newPhone2_1): " + newPhone2.equals(newPhone2_1));
         System.out.println("newPhone2.equals(newPhone2_2): " + newPhone2.equals(newPhone2_2));
 
+        System.out.println();
         System.out.println("newPhone1 hashCode: " + newPhone1.hashCode());
         System.out.println("newPhone1_1 hashCode: " + newPhone1_1.hashCode());
         System.out.println("newPhone1_2 hashCode: " + newPhone1_2.hashCode());
 
+        System.out.println();
         System.out.println("newPhone2 hashCode: " + newPhone2.hashCode());
         System.out.println("newPhone2_2 hashCode: " + newPhone2_1.hashCode());
         System.out.println("newPhone2_1 hashCode: " + newPhone2_2.hashCode());
