@@ -6,6 +6,12 @@ public class Android implements Phone {
     public String color;
 
     public Android (String modelName, String color) {
+        if (modelName == null || modelName.isEmpty()) {
+            throw new IllegalArgumentException("Значення 1 відсутнє");
+        }
+        if (color == null || color.isEmpty()) {
+            throw new IllegalArgumentException("Значення 2 відсутнє");
+        }
         this.modelName = modelName;
         this.color = color;
     }

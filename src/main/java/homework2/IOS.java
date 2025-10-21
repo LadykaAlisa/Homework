@@ -6,9 +6,16 @@ public class IOS implements Phone {
     public String color;
 
     public IOS (String modelName, String color) {
+        if (modelName== null || modelName.isEmpty()) {
+            throw new IllegalArgumentException("Значення модель відсутнє");
+        }
+        if (color == null || color.isEmpty()) {
+            throw new IllegalArgumentException("Значення колір відсутнє");
+        }
         this.modelName = modelName;
         this.color = color;
     }
+
     @Override
     public void call() {
         System.out.println(color + " " + modelName + " " + "Рінг - рінг");
