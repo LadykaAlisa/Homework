@@ -18,6 +18,11 @@ public class WebTest {
         WebDriver driver = new ChromeDriver();
         driver.get("http://www.allo.ua");
 
+        List<WebElement> cookieButton = driver.findElements(By.xpath("//button[contains(., 'Прийняти') or contains(., 'Accept')]"));
+        if (!cookieButton.isEmpty()) {
+            cookieButton.get(0).click();
+        }
+
         WebElement searchInput = driver.findElement(By.id("search-form__input"));
         searchInput.sendKeys("IPhone 17");
         searchInput.sendKeys(Keys.ENTER);
@@ -32,11 +37,6 @@ public class WebTest {
                 By.cssSelector(".products-layout__container.products-layout--grid .product-card"));
         Assert.assertTrue(searchResultsContainer.size() >= 3, "searchResultsContainer has 3 elements" + searchResultsContainer.size());
 
-        if (searchResultsContainer.size() >= 3) {
-            System.out.println ("Успішно: знайдено " + searchResultsContainer.size() + " продуктів");
-        } else {
-            Assert.fail ("Помилка! Знайдено менше ніж 3 продукти");
-        }
         driver.quit();
     }
 
