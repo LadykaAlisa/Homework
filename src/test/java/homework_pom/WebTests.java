@@ -42,7 +42,7 @@ public class WebTests {
         page.cookies();
         page.search("Xiaomi 15T");
         searchResultsPage.waitForResults();
-        searchResultsPage.printProducts(1, 3);
+        searchResultsPage.getProducts(1, 3);
 
 
 
