@@ -34,7 +34,6 @@ public class SearchResultsPage {
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(productList));
     }
 
-    // --- Внутрішній клас для продукту ---
     public static class Product {
         private String name;
         private String price;
@@ -77,7 +76,7 @@ public class SearchResultsPage {
 
             productData.add(new Product(name, price, screen));
 
-            // Вивід у консоль
+
             System.out.println("Product " + (i + 1) + ":");
             System.out.println("  Name: " + name);
             System.out.println("  Price: " + price);
