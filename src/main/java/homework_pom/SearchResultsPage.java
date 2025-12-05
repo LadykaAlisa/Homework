@@ -50,6 +50,17 @@ public class SearchResultsPage {
         public String getScreen() { return screen; }
     }
 
+    public void cookies () {
+        List<WebElement> buttons = driver.findElements(
+                By.xpath("//button[contains(text(),'Разрешить') or contains(text(),'Accept') or contains(text(),'OK')]"));
+        if (!buttons.isEmpty()) {
+            WebElement acceptButton = buttons.get(0);
+            if (acceptButton.isDisplayed() && acceptButton.isEnabled()) {
+                acceptButton.click();
+            }
+        }
+    }
+
     public List<Product> getProducts(int fromIndex, int toIndex) {
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(productList));
         List<WebElement> products = driver.findElements(productList);

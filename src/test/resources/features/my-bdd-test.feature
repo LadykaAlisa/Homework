@@ -6,3 +6,6 @@ Feature: Search and save products
     When I search for "iPhone"
     Then search results should be visible
     And I save top 3 products to database
+
+
+

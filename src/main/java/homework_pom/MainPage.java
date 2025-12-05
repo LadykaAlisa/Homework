@@ -37,7 +37,7 @@ public class MainPage {
 
         public void cookies () {
             List<WebElement> buttons = driver.findElements(
-                    By.xpath("//button[contains(text(),'Прийняти') or contains(text(),'Accept') or contains(text(),'OK')]"));
+                    By.xpath("//button[contains(text(),'Разрешить') or contains(text(),'Accept') or contains(text(),'OK')]"));
             if (!buttons.isEmpty()) {
                 WebElement acceptButton = buttons.get(0);
                 if (acceptButton.isDisplayed() && acceptButton.isEnabled()) {
