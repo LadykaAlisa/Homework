@@ -20,34 +20,27 @@ import java.sql.Statement;
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 
-    private Connection conn;
-    private Statement stmt;
-
     public static WebDriver driver;
-
     private MainPage page;
     private SearchResultsPage searchResultsPage;
 
     @BeforeSuite
-    public void setUp() throws SQLException {
-        driver = new ChromeDriver();   // без повторного оголошення змінної
+    public void setUp() {
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
-
         page = new MainPage(driver);
         searchResultsPage = new SearchResultsPage(driver);
 
-        conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/db?useUnicode=true&characterEncoding=UTF-8",
-                "root",
-                "11111111"
-        );
-        stmt = conn.createStatement();
+//        conn = DriverManager.getConnection(
+//                "jdbc:mysql://localhost:3306/db?useUnicode=true&characterEncoding=UTF-8",
+//                "root",
+//                "11111111"
+//        );
+//        stmt = conn.createStatement();
     }
 
     @AfterSuite
-    public void tearDown() throws SQLException {
-        stmt.close();
-        conn.close();
+    public void tearDown() {
         driver.quit();
     }
 }
