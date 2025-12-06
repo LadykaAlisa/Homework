@@ -2,6 +2,7 @@ package Homework12.steps;
 
 //TODO: homework for session 11 in cucumber
 
+import Homework12.CucumberRunner12;
 import homework_pom.MainPage;
 import homework_pom.SearchResultsPage;
 import io.cucumber.java.en.And;
@@ -17,21 +18,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class SearchSteps {
-    private MainPage page;
-    private SearchResultsPage searchResultsPage;
-    private Connection conn;
+    private MainPage page = CucumberRunner12.page;
+    private SearchResultsPage searchResultsPage = CucumberRunner12.searchResultsPage;
+    private Connection conn = CucumberRunner12.conn;
 
     @Given("I open Allo website")
     public void iOpenAlloWebsite() throws SQLException {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/db?useUnicode=true&characterEncoding=UTF-8",
-                "root",
-                "11111111"
-        );
-        page = new MainPage(driver);
-        searchResultsPage = new SearchResultsPage(driver);
+        // Используем уже инициализированные переменные из CucumberRunner12
         page.load();
     }
 

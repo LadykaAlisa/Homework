@@ -27,10 +27,10 @@ public class CucumberRunner13 extends AbstractTestNGCucumberTests {
 
     @BeforeSuite
     public void beforeSuite() throws SQLException {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        page = new MainPage(driver);
-        searchResultsPage = new SearchResultsPage(driver);
+        // WebDriver будет инициализирован в CucumberHooks
+        // Эти переменные могут быть инициализированы позже, когда WebDriver будет готов
+        page = null;
+        searchResultsPage = null;
 
 
 //        conn = DriverManager.getConnection(
@@ -43,9 +43,8 @@ public class CucumberRunner13 extends AbstractTestNGCucumberTests {
 
     @AfterSuite
     public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
+        // WebDriver управляется CucumberHooks, поэтому здесь ничего не делаем
+        // CucumberHooks.@After закроет браузер
     }
 }
 

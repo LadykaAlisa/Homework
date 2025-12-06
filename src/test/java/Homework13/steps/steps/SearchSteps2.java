@@ -95,8 +95,7 @@ public class SearchSteps2 {
 
     @Then("I save collected product parameters to database")
     public void saveToDb() throws SQLException {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        // Используем уже существующий WebDriver из CucumberHooks
         conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/db?useUnicode=true&characterEncoding=UTF-8",
                 "root",

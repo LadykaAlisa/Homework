@@ -19,17 +19,17 @@
             plugin = {"pretty"}
     )
     public class CucumberRunner12 extends AbstractTestNGCucumberTests {
-        private Connection conn;
-        private Statement stmt;
-        private ChromeDriver driver;
-        private MainPage page;
-        private SearchResultsPage searchResultsPage;
+        public static Connection conn;
+        public static Statement stmt;
+        public static ChromeDriver driver;
+        public static MainPage page;
+        public static SearchResultsPage searchResultsPage;
 
         @BeforeSuite
         public void setUp() throws SQLException {
             driver = new ChromeDriver();
-            page = new MainPage(driver);
             driver.manage().window().maximize();
+            page = new MainPage(driver);
             searchResultsPage = new SearchResultsPage(driver);
             conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/db?useUnicode=true&characterEncoding=UTF-8", "root", "11111111");
@@ -39,8 +39,8 @@
 
         @AfterSuite
         public void tearDown() throws SQLException {
-            conn.close();
-            driver.quit();
+            if (conn != null) conn.close();
+            if (driver != null) driver.quit();
         }
     }
 
