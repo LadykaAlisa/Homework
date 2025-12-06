@@ -56,7 +56,40 @@ public class SearchSteps2 {
     @Then("I collect {} from search results")
     public void collectProducts(String whatToCollect) {
         System.out.println("Collecting: " + whatToCollect);
-        listPage.collectProducts();
+        collected = listPage.collectProducts();
+    }
+
+
+    @Given("I extract PRODUCT_CARD parameters {string}")
+    public void i_extract_product_card_parameters(String parameters) {
+        System.out.println("Extracting parameters: " + parameters);
+        // Parameters are already extracted during collectProducts()
+        // This step is for logging/documentation purposes
+    }
+
+
+    @Given("I save collected PRODUCT_CARD parameters {string} to database")
+    public void i_save_collected_product_card_parameters_to_database(String parameters) throws SQLException {
+        System.out.println("Saving parameters to database: " + parameters);
+        conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/db?useUnicode=true&characterEncoding=UTF-8",
+                "root",
+                "11111111");
+        
+        // Save the collected products to database
+        for (Product product : collected) {
+            try {
+                var stmt = conn.prepareStatement(
+                    "INSERT INTO devices (Name, Price, Screen) VALUES (?,?,?)"
+                );
+                stmt.setString(1, product.getName());
+                stmt.setString(2, product.getPrice());
+                stmt.setString(3, product.getScreen());
+                stmt.execute();
+            } catch (SQLException e) {
+                System.out.println("Failed to save in DB: " + product + " | Error: " + e.getMessage());
+            }
+        }
     }
 
 
