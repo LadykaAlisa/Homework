@@ -18,7 +18,7 @@
             glue = "Homework12.steps",
             plugin = {"pretty"}
     )
-    public class CucumberRunner extends AbstractTestNGCucumberTests {
+    public class CucumberRunner12 extends AbstractTestNGCucumberTests {
         private Connection conn;
         private Statement stmt;
         private ChromeDriver driver;

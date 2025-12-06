@@ -2,17 +2,19 @@ package Homework13.steps.elements;
 
 import org.openqa.selenium.By;
 
-public enum AlloPageElements {
-    SEARCH_INPUT(By.id("search-form__input")),
-    ACCEPT_COOKIES(By.xpath("//button[contains(text(),'Разрешить') or contains(text(),'Accept') or contains(text(),'OK')]")),
-    SEARCH_BUTTON(By.className("search-form__submit-button"));
+public enum ProductElements implements ILocatable {
+    PRODUCT_CARD(By.cssSelector(".product-card")),
+    NAME(By.cssSelector(".product-card__title")),
+    PRICE(By.cssSelector(".v-pb__cur")),
+    SCREEN(By.xpath(".//dt[contains(text(), 'Тип екрану')]/following-sibling::dd[1]"));
 
     private final By locator;
 
-    AlloPageElements(By locator) {
+    ProductElements(By locator) {
         this.locator = locator;
     }
 
+    @Override
     public By getLocator() {
         return locator;
     }

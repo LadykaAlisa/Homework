@@ -1,11 +1,9 @@
-package homework2;
+package Homework13.steps.elements;
 
-//TODO: create interface IPhone, which can call(), unlockScreen(), blockScreen()
-//TODO: create classes IOS and Android which implement IPhone
-//TODO: unlock, make call, lock screen for both phones
 
-public interface Phone {
-    void call();
-    void unlockScreen();
-    void blockScreen();
+import org.openqa.selenium.By;
+
+public interface ILocatable {
+
+    By getLocator();
 }
