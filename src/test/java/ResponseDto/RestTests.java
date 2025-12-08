@@ -4,6 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 import java.util.List;
+import lombok.Data;
 
 public class RestTests {
     @Test
