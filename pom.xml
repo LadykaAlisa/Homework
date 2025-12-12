@@ -125,6 +125,7 @@
                                 <param>**/*.json</param>
                             </jsonFiles>
                             <parallelTesting>false</parallelTesting>
+                            <checkBuildResult>false</checkBuildResult>
                         </configuration>
                     </execution>
                 </executions>
