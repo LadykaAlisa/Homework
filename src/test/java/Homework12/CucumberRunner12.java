@@ -16,7 +16,7 @@
     @CucumberOptions(
             features = "src/test/resources/features12",
             glue = "Homework12.steps",
-            plugin = {"pretty", "json:target/cucumber-reports/cucumber12.json"}
+            plugin = {"pretty", "json:target/cucumber-reports/cucumber12.json", "html:target/cucumber-reports/cucumber12.html"}
     )
     public class CucumberRunner12 extends AbstractTestNGCucumberTests {
         public static Connection conn;

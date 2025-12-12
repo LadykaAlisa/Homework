@@ -16,8 +16,8 @@ import java.sql.SQLException;
         glue = "Homework13.steps",
         plugin = {
                 "pretty",
-                "html:target/report.html",
-                "json:target/cucumber-report/Cucumber.json",
+                "html:target/cucumber-reports/cucumber15.html",
+                "json:target/cucumber-reports/cucumber15.json",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         }
 )
