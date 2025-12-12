@@ -5,9 +5,12 @@ import Homework13.steps.elements.*;
 import Homework13.steps.models.Product;
 import Homework13.steps.pages.*;
 import Homework13.steps.CucumberHooks;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.sql.Connection;
@@ -31,6 +34,11 @@ public class SearchSteps2 {
         driver.get("https://allo.ua/");
     }
 
+    @Given("I open Allo website")
+    public void openAlloWebsite() {
+        driver.get("https://allo.ua/");
+    }
+
 
     @Given("I click {word} if present")
     public void clickIfPresent(String elementName) {
@@ -50,6 +58,32 @@ public class SearchSteps2 {
     public void setElementValue(String elementName, String value) {
         AlloPageElements element = AlloPageElements.valueOf(elementName);
         searchPage.write(element, value);
+    }
+
+    @Given("I accept cookies")
+    public void acceptCookies() {
+        AlloPageElements element = AlloPageElements.ACCEPT_COOKIES;
+        if (searchPage.isPresent(element)) searchPage.click(element);
+    }
+
+    @When("I search for {string}")
+    public void searchFor(String searchTerm) {
+        searchPage.searchFor(searchTerm);
+    }
+
+    @Then("search results should be visible")
+    public void searchResultsVisible() {
+        List<WebElement> cards = driver.findElements(ProductElements.PRODUCT_CARD.getLocator());
+        if (cards.isEmpty()) {
+            throw new RuntimeException("No search results found");
+        }
+    }
+
+    @And("I save top {int} products to database")
+    public void saveTopProductsToDatabase(int count) throws SQLException {
+        List<Product> products = listPage.collectProducts();
+        collected.addAll(products.subList(0, Math.min(count, products.size())));
+        saveToDb();
     }
 
 

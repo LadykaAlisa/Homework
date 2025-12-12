@@ -14,7 +14,7 @@
     import java.sql.Statement;
 
     @CucumberOptions(
-            features = "src/test/resources/features",
+            features = "src/test/resources/features12",
             glue = "Homework12.steps",
             plugin = {"pretty"}
     )

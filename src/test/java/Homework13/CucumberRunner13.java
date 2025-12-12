@@ -15,7 +15,7 @@ import org.testng.annotations.BeforeSuite;
 import java.sql.SQLException;
 
 @CucumberOptions(
-        features = "src/test/resources/features",
+        features = "src/test/resources/features13",
         glue = "Homework13.steps",
         plugin = {"pretty"}
 )
