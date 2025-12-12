@@ -19,6 +19,7 @@ buildNumber.properties
 /out
 *.iml
 allure-results
+.vscode
 
 # Temporary test files
 *.bat
