@@ -17,7 +17,7 @@ import java.sql.SQLException;
         plugin = {
                 "pretty",
                 "html:target/report.html",
-                "json:target/Cucumber.json",
+                "json:target/cucumber-report/Cucumber.json",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         }
 )
