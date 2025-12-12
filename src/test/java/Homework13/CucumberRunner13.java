@@ -17,7 +17,7 @@ import java.sql.SQLException;
 @CucumberOptions(
         features = "src/test/resources/features13",
         glue = "Homework13.steps",
-        plugin = {"pretty"}
+        plugin = {"pretty", "json:target/cucumber-reports/cucumber.json"}
 )
 public class CucumberRunner13 extends AbstractTestNGCucumberTests {
 
