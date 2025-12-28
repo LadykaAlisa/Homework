@@ -1,6 +1,8 @@
 package Homework15;
 
 
+import homework15.DBConnectionFactory;
+import homework15.WebDriverFactory;
 import homework_pom.MainPage;
 import homework_pom.SearchResultsPage;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
@@ -9,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import java.net.MalformedURLException;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 
@@ -23,18 +27,23 @@ import java.sql.SQLException;
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         }
 )
-public class CucumberRunner13 extends AbstractTestNGCucumberTests {
+public class CucumberRunner15 extends AbstractTestNGCucumberTests {
+    private final static WebDriverFactory driverFactory = new WebDriverFactory();
+    private  final static DBConnectionFactory connectionFactory = new DBConnectionFactory();
+    private WebDriver driver;
+    private Connection conn;
 
-    public static WebDriver driver;
     private MainPage page;
     private SearchResultsPage searchResultsPage;
 
     @BeforeSuite
-    public void beforeSuite() throws SQLException {
+    public void beforeSuite() throws SQLException, MalformedURLException {
         // WebDriver будет инициализирован в CucumberHooks
         // Эти переменные могут быть инициализированы позже, когда WebDriver будет готов
+        driver = WebDriverFactory.getDriver();
         page = null;
         searchResultsPage = null;
+        conn = connectionFactory.getConnection();
 
 
 //        conn = DriverManager.getConnection(

@@ -5,7 +5,7 @@
         <classes>
             <class name="Homework12.CucumberRunner12"/>
             <class name="Homework13.CucumberRunner13"/>
-            <class name="Homework15.CucumberRunner13"/>
+            <class name="Homework15.CucumberRunner15"/>
         </classes>
     </test>
 </suite>

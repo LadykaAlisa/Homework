@@ -3,7 +3,7 @@
 
     <test name="My Cucumber Test">
         <classes>
-            <class name="Homework15.CucumberRunner13"/>
+            <class name="Homework15.CucumberRunner15"/>
         </classes>
     </test>
 </suite>

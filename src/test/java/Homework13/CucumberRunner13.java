@@ -18,6 +18,8 @@ import java.sql.SQLException;
         features = "src/test/resources/features13",
         glue = "Homework13.steps",
         plugin = {"pretty", "json:target/cucumber-reports/cucumber13.json", "html:target/cucumber-reports/cucumber13.html"}
+        // Temporarily disabled Allure plugin to prevent Jenkins build failures
+        // , "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
 )
 public class CucumberRunner13 extends AbstractTestNGCucumberTests {
 
