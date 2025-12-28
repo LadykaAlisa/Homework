@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven3911'          // ИМЯ Maven из Global Tool Configuration
-        jdk 'JDK17'                // ИМЯ JDK из Global Tool Configuration
+        maven 'maven3911'
+        jdk 'JDK17'
     }
 
     environment {
@@ -31,13 +31,14 @@ pipeline {
 
     post {
         always {
-            echo 'Publishing Allure report...'
-
-            allure([
-                includeProperties: false,
-                jdk: '',
-                results: [[path: 'target/allure-results']]
-            ])
+            script {
+                echo 'Publishing Allure report...'
+                allure([
+                    includeProperties: false,
+                    tool: 'allure2531',
+                    results: [[path: 'target/allure-results']]
+                ])
+            }
         }
 
         success {
