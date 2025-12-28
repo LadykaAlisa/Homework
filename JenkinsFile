@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven3911'          // ИМЯ Maven из Global Tool Configuration
+        jdk 'JDK17'                // ИМЯ JDK из Global Tool Configuration
+    }
+
+    environment {
+        DRIVER_NAME = 'chrome'
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/LadykaAlisa/Homework'
+            }
+        }
+
+        stage('Build & Test') {
+            steps {
+                bat '''
+                    mvn clean test ^
+                    -Ddriver.name=%DRIVER_NAME%
+                '''
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Publishing Allure report...'
+
+            allure([
+                includeProperties: false,
+                jdk: '',
+                results: [[path: 'target/allure-results']]
+            ])
+        }
+
+        success {
+            echo 'BUILD SUCCESS 🎉'
+        }
+
+        failure {
+            echo 'BUILD FAILED ❌'
+        }
+    }
+}
